@@ -17,7 +17,11 @@ function Header() {
                 <input type="text" placeholder='Search' />
             </HeaderL>
             <HeaderR>
-                <HeaderOp />
+                <HeaderOp Icon={ HomeIcon } title='Home' />
+                <HeaderOp Icon={ SupervisorAccountIcon } title='My Network' />
+                <HeaderOp Icon={ BusinessCenterIcon } title='Jobs' />
+                <HeaderOp Icon={ ChatIcon } title='Messaging' />
+                <HeaderOp Icon={ NotificationsIcon } title='Notifications' />
             </HeaderR>
         </HeaderContainer>
     )
@@ -25,7 +29,12 @@ function Header() {
 
 export default Header
 
-const HeaderContainer = styled.div``;
+const HeaderContainer = styled.div`
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 const HeaderL = styled.div`
   display: flex;
   align-items: center;
@@ -35,4 +44,6 @@ const HeaderL = styled.div`
       height: 34px;
   }
 `;
-const HeaderR = styled.div``;
+const HeaderR = styled.div`
+    display: flex;
+`;
