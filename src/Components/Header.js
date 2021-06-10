@@ -33,6 +33,8 @@ export default Header
 
 const HeaderContainer = styled.div`
   padding: 0 1.75rem;
+  height: 3.625rem;
+  border-bottom: solid 1px rgba(0, 0, 0, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;

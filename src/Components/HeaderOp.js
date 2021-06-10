@@ -25,4 +25,21 @@ const HeaderOpContainer = styled.div`
     :hover {
         opacity: 1;
     }
+
+    :hover::after {
+        transform: scaleX(1);
+    }
+
+    ::after {
+        content: "";
+        background-color: black;
+        display: block;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -0.5rem;
+        transform: scaleX(0);
+        transition: transform 300ms ease-in-out;
+    }
 `;
