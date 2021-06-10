@@ -12,9 +12,11 @@ function Header() {
     return (
         <HeaderContainer>
             <HeaderL>
-                <img src={ linkedin } alt="" />
-                <SearchIcon />
-                <input type="text" placeholder='Search' />
+                <img src={linkedin} alt="" />
+                <Searchbar>
+                    <SearchIcon />
+                    <input type="text" placeholder='Search' />
+                </Searchbar>
             </HeaderL>
             <HeaderR>
                 <HeaderOp Icon={ HomeIcon } title='Home' />
@@ -30,7 +32,7 @@ function Header() {
 export default Header
 
 const HeaderContainer = styled.div`
-  padding: 0 1.5rem;
+  padding: 0 1.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -41,9 +43,31 @@ const HeaderL = styled.div`
 
   > img {
       object-fit: contain;
-      height: 34px;
+      height: 2.125rem;
   }
 `;
+
+const Searchbar = styled.div`
+    display: flex;
+    align-items: center;
+    background-color: #eef3f8;
+    height: 2.125rem;
+    margin-left: 0.5rem;
+    > .MuiSvgIcon-root {
+        margin: 0 0.3rem 0 0.9rem;
+        font-size: 1.3rem;
+        opacity: 0.7;
+    }
+
+    > input {
+      outline: none;
+      border: none;
+      background-color: transparent;
+      width: 12.5rem;
+      padding-right: 0.5rem;
+  }
+`;
+
 const HeaderR = styled.div`
     display: flex;
 `;

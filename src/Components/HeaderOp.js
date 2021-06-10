@@ -15,6 +15,9 @@ const HeaderOpContainer = styled.div`
     text-align: center;
     width: 5rem;
     opacity: 0.7;
+    cursor: pointer;
+    position: relative;
+
     > p {
         font-size: 0.75rem;
     }
