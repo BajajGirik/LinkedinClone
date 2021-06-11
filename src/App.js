@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
+import Contents from './Components/Contents';
 import Header from './Components/Header';
 import SidebarL from './Components/SidebarL';
 
@@ -11,7 +12,7 @@ function App() {
 
       <Main>
         <SidebarL />
-        {/* Posts */}
+        <Contents />
         {/* Sidebar right */}
       </Main>
     </div>
