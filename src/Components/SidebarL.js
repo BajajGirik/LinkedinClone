@@ -3,26 +3,40 @@ import styled from "styled-components"
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
 
 function SidebarL() {
+    const hashTag = (s) => (
+        <Hash>
+            <h4>#</h4>
+            <p>{ s }</p>
+        </Hash>
+    )
+
     return (
         <SidebarLContainer>
-            <SidebarTop></SidebarTop>
-            <UserInfo>
-                <Button>
-                    <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
-                </Button>
-                <h2>Welcome, Mr.Kong!</h2>
-            </UserInfo>
-            <ConnectionInfo>
-                <div>
-                    <p>Connections</p>
-                    <h3>Grow your connections</h3>
-                </div>
-                <p>29</p>
-            </ConnectionInfo>
-            <LastSec>
-                <TurnedInIcon />
-                <p>My items</p>
-            </LastSec>
+            <SidebarTop>
+                <SidebarT></SidebarT>
+                <UserInfo>
+                    <Button>
+                        <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
+                    </Button>
+                    <h2>Welcome, Mr.Kong!</h2>
+                </UserInfo>
+                <ConnectionInfo>
+                    <div>
+                        <p>Connections</p>
+                        <h3>Grow your connections</h3>
+                    </div>
+                    <p>29</p>
+                </ConnectionInfo>
+                <LastSec>
+                    <TurnedInIcon />
+                    <p>My items</p>
+                </LastSec>
+            </SidebarTop>
+            <SidebarBottom>
+                {
+                    hashTag("India")
+                }
+            </SidebarBottom>
         </SidebarLContainer>
     )
 }
@@ -31,6 +45,10 @@ export default SidebarL
 
 const SidebarLContainer = styled.div`
     flex: 0.2;
+`;
+
+const SidebarTop = styled.div`
+    background-color: white;
     box-shadow: 0px 1px 3px lightgray;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -38,7 +56,7 @@ const SidebarLContainer = styled.div`
     border-bottom-right-radius: 10px;
 `;
 
-const SidebarTop = styled.div`
+const SidebarT = styled.div`
     background-image: url(https://devblogs.microsoft.com/xamarin/wp-content/uploads/sites/44/2020/03/CssSample1.png);
     height: 3.375rem;
     border-top-left-radius: 10px;
@@ -101,4 +119,17 @@ const LastSec = styled.div`
     :hover {
         background-color: lightgray;
     }
+`;
+
+const SidebarBottom = styled.div`
+    background-color: white;
+    box-shadow: 0px 1px 3px lightgray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+`;
+
+const Hash = styled.div`
+    display: flex;
 `;
