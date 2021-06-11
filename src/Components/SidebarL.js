@@ -1,5 +1,6 @@
 import { Avatar, Button } from "@material-ui/core"
 import styled from "styled-components"
+import TurnedInIcon from '@material-ui/icons/TurnedIn';
 
 function SidebarL() {
     return (
@@ -18,6 +19,10 @@ function SidebarL() {
                 </div>
                 <p>29</p>
             </ConnectionInfo>
+            <LastSec>
+                <TurnedInIcon />
+                <p>My items</p>
+            </LastSec>
         </SidebarLContainer>
     )
 }
@@ -27,6 +32,10 @@ export default SidebarL
 const SidebarLContainer = styled.div`
     flex: 0.2;
     box-shadow: 0px 1px 3px lightgray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
 `;
 
 const SidebarTop = styled.div`
@@ -68,6 +77,25 @@ const ConnectionInfo = styled.div`
     > div > h3 {
         margin-top: 2px;
         font-size: 0.75rem;
+    }
+
+    :hover {
+        background-color: lightgray;
+    }
+`;
+
+const LastSec = styled.div`
+    display: flex;
+    padding: 0.8rem 0.5rem;
+    border-top: solid 1px lightgray;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+
+    > .MuiSvgIcon-root {
+        color: gray;
+        font-size: 1.2rem;
+        margin-right: 0.2rem;
     }
 
     :hover {
