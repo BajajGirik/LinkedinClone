@@ -50,10 +50,11 @@ const UserInfo = styled.div`
 const ConnectionInfo = styled.div`
     display: flex;
     justify-content: space-between;
-    padding: 1.4rem 0.5rem;
+    padding: 0 0.5rem;
+    margin: 1.4rem 0;
     font-size: 0.75rem;
-    border-bottom: solid 1px lightgray;
-    
+    cursor: pointer;
+
     > p {
         color: #0a66c2;
         font-weight: 700;
@@ -67,5 +68,9 @@ const ConnectionInfo = styled.div`
     > div > h3 {
         margin-top: 2px;
         font-size: 0.75rem;
+    }
+
+    :hover {
+        background-color: lightgray;
     }
 `;
