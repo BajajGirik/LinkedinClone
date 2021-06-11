@@ -23,7 +23,8 @@ function Header() {
                 <HeaderOp Icon={ SupervisorAccountIcon } title='My Network' />
                 <HeaderOp Icon={ BusinessCenterIcon } title='Jobs' />
                 <HeaderOp Icon={ ChatIcon } title='Messaging' />
-                <HeaderOp Icon={ NotificationsIcon } title='Notifications' />
+                <HeaderOp Icon={NotificationsIcon} title='Notifications' />
+                <HeaderOp avatar='https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a' title='me' />
             </HeaderR>
         </HeaderContainer>
     )

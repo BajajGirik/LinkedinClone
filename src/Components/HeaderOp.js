@@ -1,9 +1,11 @@
+import { Avatar } from "@material-ui/core";
 import styled from "styled-components"
 
-function HeaderOp({ Icon, title }) {
+function HeaderOp({ Icon, title, avatar }) {
     return (
         <HeaderOpContainer>
             {Icon && <Icon />}
+            {avatar && <AvatarS src={avatar} /> }
             <p>{ title }</p>
         </HeaderOpContainer>
     )
@@ -42,4 +44,22 @@ const HeaderOpContainer = styled.div`
         transform: scaleX(0);
         transition: transform 300ms ease-in-out;
     }
+
+    @media screen and (max-width: 740px) {
+        > p {
+            display: none;
+        }
+
+        ::after {
+            display: none;
+        }
+    }
+`;
+
+const AvatarS = styled(Avatar)`
+    object-fit: contain !important;
+    margin-left: 1.5625rem;
+    margin-bottom: 1px;
+    width: 1.5625rem !important;
+    height: 1.5625rem !important;
 `;
