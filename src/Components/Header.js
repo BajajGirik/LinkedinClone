@@ -56,10 +56,12 @@ const Searchbar = styled.div`
     background-color: #eef3f8;
     height: 2.125rem;
     margin-left: 0.5rem;
+    border-radius: 5px;
+
     > .MuiSvgIcon-root {
         margin: 0 0.3rem 0 0.9rem;
         font-size: 1.3rem;
-        opacity: 0.7;
+        opacity: 0.8;
     }
 
     > input {
@@ -68,6 +70,36 @@ const Searchbar = styled.div`
       background-color: transparent;
       width: 12.5rem;
       padding-right: 0.5rem;
+  }
+
+  @media screen and (max-width: 64.0625rem) {
+      background-color: white;
+      flex-direction: column;
+      width: 5rem;
+      cursor: pointer;
+
+      > input {
+          display: none;
+      }
+
+      > .MuiSvgIcon-root {
+        margin: 0;
+        font-size: 1.5rem;
+        opacity: 0.7;
+     }
+      
+      ::after {
+          display: block;
+          content: "Search";
+          font-size: 0.75rem;  
+      }
+  }
+
+  @media screen and (max-width: 46.25rem) {
+      justify-content: center;
+       ::after {
+            display: none;
+      }
   }
 `;
 

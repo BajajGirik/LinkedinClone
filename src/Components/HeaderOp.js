@@ -45,7 +45,7 @@ const HeaderOpContainer = styled.div`
         transition: transform 300ms ease-in-out;
     }
 
-    @media screen and (max-width: 740px) {
+    @media screen and (max-width: 46.25rem) {
         > p {
             display: none;
         }
