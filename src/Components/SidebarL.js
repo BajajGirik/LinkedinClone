@@ -34,10 +34,12 @@ function SidebarL() {
                 </LastSec>
             </SidebarTop>
             <SidebarBottom>
+                <p>Recent</p>
                 {hashTag("India")}
                 {hashTag("AWS")}
                 {hashTag("Nasa")}
                 {hashTag("Tesla")}
+                <Button>Discover More</Button>
             </SidebarBottom>
         </SidebarLContainer>
     )
@@ -125,16 +127,42 @@ const LastSec = styled.div`
 `;
 
 const SidebarBottom = styled.div`
-    padding: 1rem 0.5rem;
+    padding: 1rem 0 0 0;
     background-color: white;
     box-shadow: 0px 1px 3px lightgray;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+
+    > p {
+        font-size: 0.825rem;
+        padding-left: 0.2rem;
+        margin-bottom: 0.4rem;
+    }
+
+    > .MuiButton-root {
+        margin: 1rem 0 0 0;
+        border-top: solid 1px lightgray;
+        width: 100%;
+    }
 `;
 
 const Hash = styled.div`
     display: flex;
-    margin: 0.5rem 0;
+    align-items: center;
+    opacity: 0.6;
+    font-weight: 700;
+    padding: 0.1rem 0.5rem;
+    cursor: pointer;
+
+    > p {
+        padding-left: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    :hover {
+        background-color: lightgray;
+        opacity: 1;
+    }
 `;
