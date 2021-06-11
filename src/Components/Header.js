@@ -33,6 +33,11 @@ function Header() {
 export default Header
 
 const HeaderContainer = styled.div`
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
   padding: 0 1.75rem;
   height: 3.625rem;
   border-bottom: solid 1px rgba(0, 0, 0, 0.08);
@@ -68,7 +73,7 @@ const Searchbar = styled.div`
       outline: none;
       border: none;
       background-color: transparent;
-      width: 12.5rem;
+      width: 16rem;
       padding-right: 0.5rem;
   }
 
