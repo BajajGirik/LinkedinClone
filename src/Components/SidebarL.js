@@ -3,12 +3,13 @@ import styled from "styled-components"
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
 
 function SidebarL() {
+
     const hashTag = (s) => (
         <Hash>
             <h4>#</h4>
-            <p>{ s }</p>
+            <p>{s}</p>
         </Hash>
-    )
+    );
 
     return (
         <SidebarLContainer>
@@ -33,9 +34,10 @@ function SidebarL() {
                 </LastSec>
             </SidebarTop>
             <SidebarBottom>
-                {
-                    hashTag("India")
-                }
+                {hashTag("India")}
+                {hashTag("AWS")}
+                {hashTag("Nasa")}
+                {hashTag("Tesla")}
             </SidebarBottom>
         </SidebarLContainer>
     )
@@ -54,6 +56,7 @@ const SidebarTop = styled.div`
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+    margin-bottom: 1rem;
 `;
 
 const SidebarT = styled.div`
@@ -122,6 +125,7 @@ const LastSec = styled.div`
 `;
 
 const SidebarBottom = styled.div`
+    padding: 1rem 0.5rem;
     background-color: white;
     box-shadow: 0px 1px 3px lightgray;
     border-top-left-radius: 10px;
@@ -132,4 +136,5 @@ const SidebarBottom = styled.div`
 
 const Hash = styled.div`
     display: flex;
+    margin: 0.5rem 0;
 `;
