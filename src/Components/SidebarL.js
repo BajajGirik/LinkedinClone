@@ -16,9 +16,7 @@ function SidebarL() {
             <SidebarTop className='shadow'>
                 <SidebarT></SidebarT>
                 <UserInfo>
-                    <Button>
-                        <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
-                    </Button>
+                    <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
                     <h2>Welcome, Mr.Kong!</h2>
                 </UserInfo>
                 <ConnectionInfo>
@@ -62,12 +60,20 @@ const SidebarT = styled.div`
 
 const UserInfo = styled.div`
     text-align: center;
-    margin-top: -1.5rem;
+    margin-top: -1.875rem;
     border-bottom: solid 1px lightgray;
+
     > h2{
         font-size: 1rem;
         margin-top: 1.4rem;
         margin-bottom: 0.7rem;
+    }
+
+    > .MuiAvatar-root {
+        cursor: pointer;
+        height: 3.875rem;
+        width: 3.875rem;
+        margin: 0 auto;
     }
 `;
 
