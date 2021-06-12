@@ -9,28 +9,27 @@ function Contents() {
     return (
         <ContentsContainer>
             <div className='shadow'>
-                <Posting>
-                    <ContentInput>
-                        <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
-                        <input type="text" placeholder='Start a post'/>
-                    </ContentInput>
-                </Posting>
+                <ContentInput>
+                    <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
+                    <input type="text" placeholder='Start a post'/>
+                </ContentInput>
+
                 <MediaPosting>
                     <Media>
-                        <PhotoIcon />
+                        <PhotoIcon style={{ color: "skyblue" }} />
                         <p>Photo</p>
                     </Media>
                     <Media>
-                        <YouTubeIcon />
+                        <YouTubeIcon style={{ color: "#7fc15e" }} />
                         <p>Video</p>
                     </Media>
                     <Media>
-                        <EventNoteIcon />
+                        <EventNoteIcon style={{ color: "orange" }} />
                         <p>Event</p>
                     </Media>
                     <Media>
-                        <AssignmentIcon />
-                        <p>Article</p>
+                        <AssignmentIcon style={{ color: "tomato" }} />
+                        <p>Write article</p>
                     </Media>
                 </MediaPosting>
             </div>    
@@ -45,7 +44,7 @@ const ContentsContainer = styled.div`
     flex: 0.6;
 
     > .shadow {
-        padding: 1rem;
+        padding: 1rem 1rem 0.3rem 1rem;
     }
 
 
@@ -66,15 +65,29 @@ const ContentInput = styled.div`
     }
 `;
 
-
-const Posting = styled.div``;
-
 const MediaPosting = styled.div`
+    margin-top: 0.5rem;
     display: flex;
     justify-content: space-around;
 `;
 
 const Media = styled.div`
     display: flex;
+    font-size: 0.9rem;
     align-items: center;
+    padding: 0.7rem;
+    cursor: pointer;
+    border-radius: 5px;
+    
+    :hover {
+        background-color: lightgray;
+    }
+
+    > p {
+        margin-left: 0.5rem;
+    }
+
+    > .MuiSvgIcon-root {
+        font-size: 1.8rem;
+    }
 `;
