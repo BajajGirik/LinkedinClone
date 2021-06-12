@@ -4,7 +4,7 @@ import styled from "styled-components"
 function Contents() {
     return (
         <ContentsContainer>
-            <ContentInput>
+            <ContentInput className='shadow'>
                 <Avatar />
                 <input type="text" placeholder='Start a post'/>
             </ContentInput>
@@ -21,7 +21,6 @@ const ContentsContainer = styled.div`
 `;
 
 const ContentInput = styled.div`
-    background-color: white;
     margin-left: 0.5rem;
     padding: 1rem;
     display: flex;
@@ -29,6 +28,7 @@ const ContentInput = styled.div`
     > input {
         outline: none;
         font-size: 0.9rem;
+        font-weight: 700;
         border: solid 1px lightgray;
         border-radius: 30px;
         flex-grow: 1;

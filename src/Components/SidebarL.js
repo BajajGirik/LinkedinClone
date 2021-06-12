@@ -13,7 +13,7 @@ function SidebarL() {
 
     return (
         <SidebarLContainer>
-            <SidebarTop>
+            <SidebarTop className='shadow'>
                 <SidebarT></SidebarT>
                 <UserInfo>
                     <Button>
@@ -33,7 +33,7 @@ function SidebarL() {
                     <p>My items</p>
                 </LastSec>
             </SidebarTop>
-            <SidebarBottom>
+            <SidebarBottom className='shadow'>
                 <p>Recent</p>
                 {hashTag("India")}
                 {hashTag("AWS")}
@@ -51,15 +51,7 @@ const SidebarLContainer = styled.div`
     flex: 0.2;
 `;
 
-const SidebarTop = styled.div`
-    background-color: white;
-    box-shadow: 0px 1px 3px lightgray;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    margin-bottom: 1rem;
-`;
+const SidebarTop = styled.div``;
 
 const SidebarT = styled.div`
     background-image: url(https://devblogs.microsoft.com/xamarin/wp-content/uploads/sites/44/2020/03/CssSample1.png);
@@ -128,12 +120,6 @@ const LastSec = styled.div`
 
 const SidebarBottom = styled.div`
     padding: 1rem 0 0 0;
-    background-color: white;
-    box-shadow: 0px 1px 3px lightgray;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
 
     > p {
         font-size: 0.825rem;
