@@ -74,6 +74,7 @@ const SocialActions = styled.div`
     margin-top: 1rem;
     padding-top: 0.3rem;
     border-top: solid 1px #d3d3d370;
+    
     > div {
         padding: 0.5rem;
         display: flex;

@@ -4,6 +4,7 @@ import './App.css';
 import Contents from './Components/Contents';
 import Header from './Components/Header';
 import SidebarL from './Components/SidebarL';
+import SidebarR from './Components/SidebarR';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Main>
         <SidebarL />
         <Contents />
-        {/* Sidebar right */}
+        <SidebarR />
       </Main>
     </div>
   );
