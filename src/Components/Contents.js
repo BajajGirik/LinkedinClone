@@ -46,8 +46,6 @@ const ContentsContainer = styled.div`
     > .shadow {
         padding: 1rem 1rem 0.3rem 1rem;
     }
-
-
 `;
 
 const ContentInput = styled.div`
@@ -78,7 +76,7 @@ const Media = styled.div`
     padding: 0.7rem;
     cursor: pointer;
     border-radius: 5px;
-    
+
     :hover {
         background-color: lightgray;
     }

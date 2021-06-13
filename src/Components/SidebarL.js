@@ -1,6 +1,7 @@
 import { Avatar, Button } from "@material-ui/core"
 import styled from "styled-components"
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
+import background from '../Statics/background.png'
 
 function SidebarL() {
 
@@ -52,7 +53,7 @@ const SidebarLContainer = styled.div`
 const SidebarTop = styled.div``;
 
 const SidebarT = styled.div`
-    background-image: url(https://devblogs.microsoft.com/xamarin/wp-content/uploads/sites/44/2020/03/CssSample1.png);
+    background-image: url(${background});  
     height: 3.375rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
