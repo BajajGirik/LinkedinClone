@@ -59,15 +59,32 @@ const UserInfo = styled.div`
 
     > div {
         font-size: 0.8rem;
+   
+        > :last-child {
+            color: gray;
+            font-size: 0.6rem;
+        }
     }
 
-    > div > :last-child {
-        color: gray;
-        font-size: 0.6rem;
-    }
 `;
 
 const SocialActions = styled.div`
     display: flex;
     justify-content: space-around;
+    margin-top: 1rem;
+    border-top: solid 1px #d3d3d370;
+    > div {
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        :hover {
+            background-color: lightgray;
+        }
+
+        > p {
+            margin-left: 0.5rem;
+        }
+    }
 `;
