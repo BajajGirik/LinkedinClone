@@ -7,12 +7,21 @@ import styled from "styled-components"
 import Posts from "./Posts";
 
 function Contents() {
+
+    const changeIt = e => {
+
+    }
+
+    const submitIt = e => {
+        e.preventDefault();
+    }
+
     return (
         <ContentsContainer>
             <div className='shadow'>
-                <ContentInput>
+                <ContentInput onSubmit={submitIt}>
                     <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
-                    <input type="text" placeholder='Start a post'/>
+                    <input type="text" placeholder='Start a post' onChange={changeIt}/>
                 </ContentInput>
 
                 <MediaPosting>
@@ -54,7 +63,7 @@ const ContentsContainer = styled.div`
     }
 `;
 
-const ContentInput = styled.div`
+const ContentInput = styled.form`
     display: flex;
 
     > input {
