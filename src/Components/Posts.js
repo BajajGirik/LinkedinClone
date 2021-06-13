@@ -80,6 +80,7 @@ const SocialActions = styled.div`
         align-items: center;
         border-radius: 7px;
         color: #777777;
+        font-size: 0.875rem;
         cursor: pointer;
 
         :hover {
