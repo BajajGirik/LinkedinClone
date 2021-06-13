@@ -5,28 +5,44 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import styled from "styled-components"
 import Posts from "./Posts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import firebase from "firebase";
 import { db } from "../firebase";
 
 function Contents() {
 
     const [inpu, setInpu] = useState('');
+    const [posts, setPosts] = useState([]);
 
     const changeIt = e => {
         setInpu(e.target.value);
     }
 
+    useEffect(() => {
+        db.collection("posts").onSnapshot(snapshot => {
+            setPosts(snapshot.docs.map(doc => ({
+                id: doc.id,
+                data: doc.data()
+            })))
+        });
+    },[])
+
     const submitIt = e => {
         e.preventDefault();
-        db.collection('posts').add({
-            userimg: "https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a",
-            name: "Kong",
-            desc: "Inspiring to be an actor",
-            post: inpu,
-            timestamp: firebase.firestore.FieldValue.serverTimestamp();
+        if (inpu) {
+            db.collection('posts').add({
+                userimg: "https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a",
+                name: "Kong",
+                desc: "Inspiring to be an actor",
+                post: inpu,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        }
 
-        });
+        else {
+            alert('Input field should not be empty!');
+        }
+       
     }
 
     return (
