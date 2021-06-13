@@ -5,15 +5,28 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import styled from "styled-components"
 import Posts from "./Posts";
+import { useState } from "react";
+import firebase from "firebase";
+import { db } from "../firebase";
 
 function Contents() {
 
-    const changeIt = e => {
+    const [inpu, setInpu] = useState('');
 
+    const changeIt = e => {
+        setInpu(e.target.value);
     }
 
     const submitIt = e => {
         e.preventDefault();
+        db.collection('posts').add({
+            userimg: "https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a",
+            name: "Kong",
+            desc: "Inspiring to be an actor",
+            post: inpu,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp();
+
+        });
     }
 
     return (
@@ -21,7 +34,7 @@ function Contents() {
             <div className='shadow'>
                 <ContentInput onSubmit={submitIt}>
                     <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
-                    <input type="text" placeholder='Start a post' onChange={changeIt}/>
+                    <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt}/>
                 </ContentInput>
 
                 <MediaPosting>
