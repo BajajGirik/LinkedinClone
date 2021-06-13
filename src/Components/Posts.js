@@ -72,11 +72,14 @@ const SocialActions = styled.div`
     display: flex;
     justify-content: space-around;
     margin-top: 1rem;
+    padding-top: 0.3rem;
     border-top: solid 1px #d3d3d370;
     > div {
         padding: 0.5rem;
         display: flex;
         align-items: center;
+        border-radius: 7px;
+        color: #777777;
         cursor: pointer;
 
         :hover {
