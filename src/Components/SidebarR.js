@@ -3,29 +3,25 @@ import { useEffect } from "react";
 import styled from "styled-components";
 
 function SidebarR() {
-    const [trending, setTrending] = useState([])
+    const [trendings, setTrendings] = useState([])
     useEffect(() => {
-        fetch('https://covid19-api.com/country?name=India&format=json')
+        fetch('https://saurav.tech/NewsAPI/top-headlines/category/technology/in.json')
             .then(response => {
                 return response.json();
             })
             .then(data => {
-                ['code', 'longitude', 'latitude', 'lastChange', 'lastUpdate']
-                    .forEach(obj => delete data[0][obj]);
-                
-                setTrending([...trending, data[0]]);
-        })
+                setTrendings(data.articles.slice(0, 5));
+            })
+            .catch(e => alert(e))
     }, []);
 
     return (
         <SidebarRContainer className='shadow'>
-            {trending.map(data => (
-                Object.keys(data).map(key => (
-                    <div key={key.id}>
-                        <span>{key}: </span>
-                        <span>{data[key]}</span>
-                    </div>
-                ))
+            {trendings.map(trend => (
+                <div>
+                    <h3>{trend.title}</h3>
+                    <p>{trend.description}</p>
+               </div>
             ))}
         </SidebarRContainer>
     )
@@ -33,4 +29,10 @@ function SidebarR() {
 
 export default SidebarR
 
-const SidebarRContainer = styled.div``;
+const SidebarRContainer = styled.div`
+    flex: 0.2;
+    padding: 1rem;
+    > div {
+        margin-bottom: 0.5rem;
+    }
+`;
