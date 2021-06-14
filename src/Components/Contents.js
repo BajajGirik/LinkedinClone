@@ -23,9 +23,9 @@ function Contents() {
             setPosts(snapshot.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
-            })))
+            })));
         });
-    },[])
+    }, []);
 
     const submitIt = e => {
         e.preventDefault();
@@ -72,12 +72,16 @@ function Contents() {
                     </Media>
                 </MediaPosting>
             </div>    
-            <Posts userimg="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a"
-                name="kong"
-                desc="Actor...Currently shooting GodzillaVsKong"
-                timestamp="21:00:00"
-                post="Pls like share and go watch my new movie godzilla vs kong in which first we are enemies and then we become besties forever...Very romantic right?? #KongGodzilla"
-            />
+            {posts.map(({ id, data }) => (
+                <Posts
+                    key={id}
+                    userimg={data.userimg}
+                    name={data.name}
+                    desc={data.desc}
+                    post={data.post}
+                    // timestamp={data.timestamp.}
+                />
+            ))}
         </ContentsContainer>
     )
 }
