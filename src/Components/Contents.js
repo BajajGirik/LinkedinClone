@@ -19,7 +19,7 @@ function Contents() {
     }
 
     useEffect(() => {
-        db.collection("posts").onSnapshot(snapshot => {
+        db.collection("posts").orderBy('timestamp','desc').onSnapshot(snapshot => {
             setPosts(snapshot.docs.map(doc => ({
                 id: doc.id,
                 data: doc.data()
@@ -37,6 +37,8 @@ function Contents() {
                 post: inpu,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
+        
+            setInpu('');
         }
 
         else {
@@ -79,7 +81,7 @@ function Contents() {
                     name={data.name}
                     desc={data.desc}
                     post={data.post}
-                    // timestamp={data.timestamp.}
+                    timestamp={data.timestamp?.toDate().toString()}
                 />
             ))}
         </ContentsContainer>

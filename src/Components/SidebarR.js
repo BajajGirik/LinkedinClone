@@ -34,6 +34,7 @@ const SidebarRContainer = styled.div`
     flex: 0.2;
     padding: 1rem;
     font-size: 0.7rem;
+    height: fit-content;
     
     > h1 {
         text-align: center;
