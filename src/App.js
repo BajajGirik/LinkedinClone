@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import './App.css';
 import Contents from './Components/Contents';
@@ -6,12 +7,15 @@ import Header from './Components/Header';
 import Login from './Components/Login';
 import SidebarL from './Components/SidebarL';
 import SidebarR from './Components/SidebarR';
+import { selectUser } from './features/userSlice';
 
 function App() {
+  const user = useSelector(selectUser);
+
   return (
     <div className="App">
       {
-      true ? (
+      !user ? (
         <Login />
         ) :
           (

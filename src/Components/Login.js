@@ -1,5 +1,7 @@
 import { useState } from "react"
+import { useDispatch } from "react-redux";
 import styled from "styled-components"
+import { login } from "../features/userSlice";
 import { auth } from "../firebase";
 import Loginlogo from "../Statics/Loginlogo.jpeg"
 
@@ -7,8 +9,9 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     
+    const dispatch = useDispatch();
     const submitIt = () => {
-
+       
     }
 
     return (
