@@ -1,13 +1,28 @@
+import { useState } from "react"
 import styled from "styled-components"
 import Loginlogo from "../Statics/Loginlogo.jpeg"
+
 function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     return (
         <LoginContainer>
             <div className='shadow'>
                 <img src={Loginlogo} alt="" />
                 <form>
-                    <input type="email" placeholder="Email"/>
-                    <input type="password" placeholder="Password" />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email} onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password} onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
                     <button type="submit">LogIn</button>
                 </form>
             </div>
