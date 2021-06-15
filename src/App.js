@@ -3,19 +3,31 @@ import styled from 'styled-components';
 import './App.css';
 import Contents from './Components/Contents';
 import Header from './Components/Header';
+import Login from './Components/Login';
 import SidebarL from './Components/SidebarL';
 import SidebarR from './Components/SidebarR';
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {
+      true ? (
+        <Login />
+        ) :
+          (
+            <>
+              <Header />
+              <Main>
+                <SidebarL />
+                <Contents />
+                <SidebarR />
+              </Main>
+            </>
+          )
+      
+      }
 
-      <Main>
-        <SidebarL />
-        <Contents />
-        <SidebarR />
-      </Main>
+      
     </div>
   );
 }
