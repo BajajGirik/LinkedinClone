@@ -12,4 +12,14 @@ function Login() {
 
 export default Login
 
-const LoginContainer = styled.div``;
+const LoginContainer = styled.div`
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+    }
+`;
