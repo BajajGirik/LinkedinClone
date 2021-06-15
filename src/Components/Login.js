@@ -1,3 +1,4 @@
+import { Button } from "@material-ui/core";
 import { useState } from "react"
 import { useDispatch } from "react-redux";
 import styled from "styled-components"
@@ -6,10 +7,14 @@ import { auth } from "../firebase";
 import Loginlogo from "../Statics/Loginlogo.jpeg"
 
 function Login() {
+    const [loginstate, setLoginstate] = useState(true);
+    const [name, setName] = useState('');
+    const [photo, setPhoto] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    
+    const [repassword, setRepassword] = useState('');
     const dispatch = useDispatch();
+
     const submitIt = () => {
         auth.signInWithEmailAndPassword(email, password)
             .then(userAuth => {
@@ -28,18 +33,41 @@ function Login() {
                 <img src={Loginlogo} alt="" />
                 <form onSubmit={submitIt}>
                     <input
+                        type="text"
+                        placeholder="Full Name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="url"
+                        placeholder="PhotoURL"
+                        value={photo}
+                        onChange={(e) => setPhoto(e.target.value)}
+                    />
+                    <input
                         type="email"
                         placeholder="Email"
-                        value={email} onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
                         placeholder="Password"
-                        value={password} onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <button type="submit">LogIn</button>
+                    <input
+                        type="password"
+                        placeholder="Re-Enter Password"
+                        value={repassword}
+                        onChange={(e) => setRepassword(e.target.value)}
+                        required
+                    />
+                    <Button type="submit">LogIn</Button>
+                    <p>New to Linkedin? <a href="#">Register Now</a></p>
                 </form>
             </div>
         </LoginContainer>
@@ -58,7 +86,7 @@ const LoginContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 5rem;
+        padding: 2rem;
 
         > img {
             object-fit: contain;
@@ -75,7 +103,7 @@ const LoginContainer = styled.div`
             margin-bottom: 0.6rem;
         }
 
-        >form > button {
+        >form > .MuiButton-root {
             margin-top: 1rem;
             width: 100%;
             background-color: #0d6efd;
@@ -84,6 +112,15 @@ const LoginContainer = styled.div`
             border: none;
             font-size: 1.2rem;
             padding: 0.6rem 0;
+        }
+
+        >form > p {
+            margin-top: 0.8rem;
+            text-align: center;
+
+            > a {
+                color: blue;
+            }
         }
     }
 `;
