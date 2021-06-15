@@ -7,7 +7,7 @@ import { auth } from "../firebase";
 import Loginlogo from "../Statics/Loginlogo.jpeg"
 
 function Login() {
-    const [loginstate, setLoginstate] = useState(true);
+    const [registerstate, setRegisterstate] = useState(false);
     const [name, setName] = useState('');
     const [photo, setPhoto] = useState('');
     const [email, setEmail] = useState('');
@@ -32,19 +32,21 @@ function Login() {
             <div className='shadow'>
                 <img src={Loginlogo} alt="" />
                 <form onSubmit={submitIt}>
-                    <input
-                        type="text"
-                        placeholder="Full Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        required
-                    />
-                    <input
-                        type="url"
-                        placeholder="PhotoURL"
-                        value={photo}
-                        onChange={(e) => setPhoto(e.target.value)}
-                    />
+                    {registerstate &&
+                        <input
+                            type="text"
+                            placeholder="Full Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required />
+                    }
+                    {registerstate &&
+                        <input
+                            type="url"
+                            placeholder="PhotoURL"
+                            value={photo}
+                            onChange={(e) => setPhoto(e.target.value)} />
+                    }
                     <input
                         type="email"
                         placeholder="Email"
@@ -59,15 +61,27 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
-                    <input
-                        type="password"
-                        placeholder="Re-Enter Password"
-                        value={repassword}
-                        onChange={(e) => setRepassword(e.target.value)}
-                        required
-                    />
-                    <Button type="submit">LogIn</Button>
-                    <p>New to Linkedin? <a href="#">Register Now</a></p>
+                    {registerstate &&
+                        <input
+                            type="password"
+                            placeholder="Re-Enter Password"
+                            value={repassword}
+                            onChange={(e) => setRepassword(e.target.value)}
+                            required />
+                    }
+                    
+                    {registerstate ? (
+                        <>
+                            <Button type="submit">Register</Button>
+                            <p>Already have an account <a href="#">Login Now</a></p> 
+                        </>
+                    ) : (
+                        <>
+                            <Button type="submit">LogIn</Button>
+                            <p>New to Linkedin? <a href="#">Register Now</a></p>                        
+                        </>  
+                    )
+                    }
                 </form>
             </div>
         </LoginContainer>
