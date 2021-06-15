@@ -14,9 +14,27 @@ function Login() {
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     const dispatch = useDispatch();
+    const clickMe = () => {
+        setRegisterstate(!registerstate);
+    }
 
-    const submitIt = () => {
-        auth.signInWithEmailAndPassword(email, password)
+    const submitIt = (e) => {
+        e.preventDefault();
+        
+        if (registerstate) {
+            if (password != repassword)
+                alert("Passwords don't match");
+            auth.createUserWithEmailAndPassword(email, password)
+                .then(userAuth => {
+                    userAuth.user.updateProfile({
+                        displayName: name,
+                        photoURL: photo
+                })
+            })
+        }
+
+        else {
+            auth.signInWithEmailAndPassword(email, password)
             .then(userAuth => {
                 dispatch(login({
                     email: userAuth.user.email,
@@ -24,7 +42,8 @@ function Login() {
                     displayname: userAuth.user.displayName,
                     photo: userAuth.user.photoURL,
                 }));
-            })
+            }).catch(e => alert(e.message));
+        }
     }
 
     return (
@@ -73,12 +92,12 @@ function Login() {
                     {registerstate ? (
                         <>
                             <Button type="submit">Register</Button>
-                            <p>Already have an account <span>Login Now</span></p> 
+                            <p>Already have an account <span onClick={clickMe}>Login Now</span></p> 
                         </>
                     ) : (
                         <>
                             <Button type="submit">LogIn</Button>
-                            <p>New to Linkedin? <span>Register Now</span></p>                        
+                            <p>New to Linkedin? <span onClick={clickMe}>Register Now</span></p>                        
                         </>  
                     )
                     }
@@ -100,7 +119,8 @@ const LoginContainer = styled.div`
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2rem;
+        padding: 0rem 2rem 2rem 2rem;
+        box-shadow: 2px 2px 10px gray;
 
         > img {
             object-fit: contain;
