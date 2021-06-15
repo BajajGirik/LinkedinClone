@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import './App.css';
 import Contents from './Components/Contents';
@@ -7,10 +8,29 @@ import Header from './Components/Header';
 import Login from './Components/Login';
 import SidebarL from './Components/SidebarL';
 import SidebarR from './Components/SidebarR';
-import { selectUser } from './features/userSlice';
+import { login, logout, selectUser } from './features/userSlice';
+import { auth } from './firebase';
 
 function App() {
   const user = useSelector(selectUser);
+  const dispath = useDispatch();
+
+  useEffect(() => {
+    auth.onAuthStateChanged(userAuth => {
+      if (userAuth) {
+        dispath(login({
+          email: userAuth.email,
+          uid: userAuth.uid,
+          displayname: userAuth.displayName,
+          photo: userAuth.photoURL
+        }));
+      }
+
+      else {
+        dispath(logout);
+      }
+    })
+  }, []);
 
   return (
     <div className="App">

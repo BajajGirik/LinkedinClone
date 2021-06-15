@@ -55,7 +55,7 @@ const UserInfo = styled.div`
         color: black;
         width: 3rem;
         height: 3rem;
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         font-weight: 900;
         margin-right: 0.5rem;
     }
