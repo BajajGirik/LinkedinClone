@@ -7,7 +7,8 @@ function Login() {
                 <img src={Loginlogo} alt="" />
                 <form>
                     <input type="email" placeholder="Email"/>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" placeholder="Password" />
+                    <button type="submit">LogIn</button>
                 </form>
             </div>
         </LoginContainer>
@@ -37,9 +38,21 @@ const LoginContainer = styled.div`
             width: 100%;
             outline: none;
             border: solid 1px lightgray;
+            padding: 1rem;
             border-radius: 10px;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        >form > button {
+            margin-top: 1rem;
+            width: 100%;
+            background-color: #0d6efd;
+            color: white;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.2rem;
+            padding: 0.6rem 0;
         }
     }
 `;
