@@ -1,12 +1,22 @@
 import { Avatar } from "@material-ui/core";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"
-import { selectUser } from "../features/userSlice";
+import { logout, selectUser } from "../features/userSlice";
+import { auth } from '../firebase';
 
 function HeaderOp({ Icon, title, use }) {
     const user = useSelector(selectUser);
+    const dispatch = useDispatch();
+
+    const logoutNow = () => {
+        if (use) {
+            dispatch(logout());
+            auth.signOut();
+        }
+    }
+
     return (
-        <HeaderOpContainer>
+        <HeaderOpContainer onClick={logoutNow}>
             {Icon && <Icon />}
             {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
             <p>{ title }</p>

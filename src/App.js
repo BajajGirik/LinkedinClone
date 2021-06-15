@@ -25,10 +25,6 @@ function App() {
           photo: userAuth.photoURL
         }));
       }
-
-      else {
-        dispath(logout);
-      }
     })
   }, []);
 
