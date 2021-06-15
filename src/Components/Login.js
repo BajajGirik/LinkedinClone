@@ -4,7 +4,11 @@ function Login() {
     return (
         <LoginContainer>
             <div className='shadow'>
-            <img src={Loginlogo} alt="" />
+                <img src={Loginlogo} alt="" />
+                <form>
+                    <input type="email" placeholder="Email"/>
+                    <input type="password" placeholder="Password"/>
+                </form>
             </div>
         </LoginContainer>
     )
@@ -21,5 +25,21 @@ const LoginContainer = styled.div`
     > div {
         display: flex;
         flex-direction: column;
+        align-items: center;
+        padding: 5rem;
+
+        > img {
+            object-fit: contain;
+            width: 26.25rem;
+        }
+
+        > form > input {
+            width: 100%;
+            outline: none;
+            border: solid 1px lightgray;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
     }
 `;
