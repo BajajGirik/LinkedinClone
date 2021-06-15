@@ -14,23 +14,29 @@ function Login() {
     const [password, setPassword] = useState('');
     const [repassword, setRepassword] = useState('');
     const dispatch = useDispatch();
+    
     const clickMe = () => {
         setRegisterstate(!registerstate);
     }
 
     const submitIt = (e) => {
         e.preventDefault();
-        
+
         if (registerstate) {
-            if (password != repassword)
+            if (password != repassword) {
                 alert("Passwords don't match");
+                return false;
+            }
+
             auth.createUserWithEmailAndPassword(email, password)
                 .then(userAuth => {
                     userAuth.user.updateProfile({
                         displayName: name,
                         photoURL: photo
-                })
-            })
+                    })
+                }).catch(e => alert(e.message));
+            
+            clickMe();      
         }
 
         else {

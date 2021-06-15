@@ -1,11 +1,14 @@
 import { Avatar } from "@material-ui/core";
+import { useSelector } from "react-redux";
 import styled from "styled-components"
+import { selectUser } from "../features/userSlice";
 
-function HeaderOp({ Icon, title, avatar }) {
+function HeaderOp({ Icon, title, use }) {
+    const user = useSelector(selectUser);
     return (
         <HeaderOpContainer>
             {Icon && <Icon />}
-            {avatar && <AvatarS src={avatar} /> }
+            {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
             <p>{ title }</p>
         </HeaderOpContainer>
     )
@@ -58,7 +61,7 @@ const HeaderOpContainer = styled.div`
 
 const AvatarS = styled(Avatar)`
     object-fit: contain !important;
-    margin-left: 1.5625rem;
+    margin: 0 auto;
     margin-bottom: 1px;
     width: 1.5625rem !important;
     height: 1.5625rem !important;
