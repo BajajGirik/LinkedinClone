@@ -73,12 +73,12 @@ function Login() {
                     {registerstate ? (
                         <>
                             <Button type="submit">Register</Button>
-                            <p>Already have an account <a href="#">Login Now</a></p> 
+                            <p>Already have an account <span>Login Now</span></p> 
                         </>
                     ) : (
                         <>
                             <Button type="submit">LogIn</Button>
-                            <p>New to Linkedin? <a href="#">Register Now</a></p>                        
+                            <p>New to Linkedin? <span>Register Now</span></p>                        
                         </>  
                     )
                     }
@@ -132,8 +132,10 @@ const LoginContainer = styled.div`
             margin-top: 0.8rem;
             text-align: center;
 
-            > a {
+            > span {
                 color: blue;
+                text-decoration: underline;
+                cursor: pointer;
             }
         }
     }
