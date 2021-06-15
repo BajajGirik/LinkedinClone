@@ -8,9 +8,11 @@ import Posts from "./Posts";
 import { useEffect, useState } from "react";
 import firebase from "firebase";
 import { db } from "../firebase";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/userSlice";
 
 function Contents() {
-
+    const user = useSelector(selectUser);
     const [inpu, setInpu] = useState('');
     const [posts, setPosts] = useState([]);
 
@@ -31,9 +33,9 @@ function Contents() {
         e.preventDefault();
         if (inpu) {
             db.collection('posts').add({
-                userimg: "https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a",
-                name: "Kong",
-                desc: "Inspiring to be an actor",
+                userimg: user.photo,
+                name: user.displayname,
+                desc: "A new user trying out linkedinclone",
                 post: inpu,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
             });
@@ -51,7 +53,7 @@ function Contents() {
         <ContentsContainer>
             <div className='shadow'>
                 <ContentInput onSubmit={submitIt}>
-                    <Avatar src="https://i.guim.co.uk/img/media/2bfc61f76154bd557b13b1b7041fcf4f4ebcd904/227_0_3006_1804/master/3006.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=10753871c86a360f1faebd9cf911b46a" />
+                    <Avatar src={user?.photo}>{user.displayname[0]}</Avatar>
                     <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt}/>
                 </ContentInput>
 
@@ -101,6 +103,11 @@ const ContentsContainer = styled.div`
 const ContentInput = styled.form`
     display: flex;
 
+    > .MuiAvatar-root {
+        color: black;
+        font-weight: 700;
+    }
+
     > input {
         outline: none;
         font-size: 0.9rem;
@@ -108,7 +115,7 @@ const ContentInput = styled.form`
         border: solid 1px lightgray;
         border-radius: 30px;
         flex-grow: 1;
-        margin-left: 1rem;
+        margin-left: 0.6rem;
         padding: 0.4rem 1rem;  
     }
 `;

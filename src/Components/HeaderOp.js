@@ -62,6 +62,8 @@ const HeaderOpContainer = styled.div`
 const AvatarS = styled(Avatar)`
     object-fit: contain !important;
     margin: 0 auto;
+    color: black !important;
+    font-weight: 700;
     margin-bottom: 1px;
     width: 1.5625rem !important;
     height: 1.5625rem !important;

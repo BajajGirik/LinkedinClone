@@ -9,7 +9,7 @@ function Posts({ userimg, name, desc, timestamp, post }) {
     return (
         <PostContainer className='shadow'>
             <UserInfo>
-                <Avatar src={userimg} />
+                <Avatar src={userimg}>{name[0]}</Avatar>
                 <div>
                     <h3>{name}</h3>
                     <p>{desc}</p>
@@ -52,8 +52,11 @@ const UserInfo = styled.div`
     margin-bottom: 1rem;
 
     > .MuiAvatar-root {
+        color: black;
         width: 3rem;
         height: 3rem;
+        font-size: 1.6rem;
+        font-weight: 900;
         margin-right: 0.5rem;
     }
 

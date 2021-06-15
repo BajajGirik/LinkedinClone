@@ -74,6 +74,9 @@ const UserInfo = styled.div`
 
     > .MuiAvatar-root {
         cursor: pointer;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 900;
         height: 3.875rem;
         width: 3.875rem;
         margin: 0 auto;
