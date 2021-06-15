@@ -17,6 +17,11 @@ function Login() {
     
     const clickMe = () => {
         setRegisterstate(!registerstate);
+        setName('');
+        setPhoto('');
+        setEmail('');
+        setPassword('');
+        setRepassword('');
     }
 
     const submitIt = (e) => {
@@ -34,9 +39,10 @@ function Login() {
                         displayName: name,
                         photoURL: photo
                     })
-                }).catch(e => alert(e.message));
-            
-            clickMe();      
+                }).then(() => {
+                    clickMe();
+                })
+                .catch(e => alert(e.message));
         }
 
         else {

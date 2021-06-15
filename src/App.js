@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
-      if (userAuth) {
+      if (userAuth && userAuth.displayName != null) {
         dispath(login({
           email: userAuth.email,
           uid: userAuth.uid,
@@ -44,7 +44,6 @@ function App() {
               </Main>
             </>
           )
-      
       }      
     </div>
   );
