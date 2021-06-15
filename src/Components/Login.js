@@ -5,12 +5,15 @@ import Loginlogo from "../Statics/Loginlogo.jpeg"
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const submitIt = () => {
+        
+    }
 
     return (
         <LoginContainer>
             <div className='shadow'>
                 <img src={Loginlogo} alt="" />
-                <form>
+                <form onSubmit={submitIt}>
                     <input
                         type="email"
                         placeholder="Email"
