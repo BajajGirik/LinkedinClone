@@ -4,7 +4,6 @@ import { useDispatch } from "react-redux";
 import styled from "styled-components"
 import { login } from "../features/userSlice";
 import { auth } from "../firebase";
-import Loginlogo from "../Statics/Loginlogo.jpeg"
 
 function Login() {
     const [registerstate, setRegisterstate] = useState(false);
@@ -61,7 +60,7 @@ function Login() {
     return (
         <LoginContainer>
             <div className='shadow'>
-                <img src={Loginlogo} alt="" />
+                <img src={process.env.PUBLIC_URL + '/Statics/Loginlogo.jpeg'} alt="" />
                 <form onSubmit={submitIt}>
                     {registerstate &&
                         <input

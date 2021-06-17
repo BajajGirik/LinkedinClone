@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import linkedin from '../Statics/linkedin.svg';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
@@ -12,7 +11,7 @@ function Header() {
     return (
         <HeaderContainer>
             <HeaderL>
-                <img src={linkedin} alt="" />
+                <img src={process.env.PUBLIC_URL + '/Statics/linkedin.png'} alt="" />
                 <Searchbar>
                     <SearchIcon />
                     <input type="text" placeholder='Search' />
@@ -46,6 +45,7 @@ const HeaderContainer = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
 const HeaderL = styled.div`
   display: flex;
   align-items: center;

@@ -1,7 +1,6 @@
 import { Avatar, Button } from "@material-ui/core"
 import styled from "styled-components"
 import TurnedInIcon from '@material-ui/icons/TurnedIn';
-import background from '../Statics/background.png'
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 
@@ -55,7 +54,7 @@ const SidebarLContainer = styled.div`
 const SidebarTop = styled.div``;
 
 const SidebarT = styled.div`
-    background-image: url(${background});  
+    background-image: url(${process.env.PUBLIC_URL + '/Statics/background.png'});  
     height: 3.375rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
