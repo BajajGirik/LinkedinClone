@@ -1,11 +1,13 @@
-import { Avatar } from "@material-ui/core";
+import { Avatar, Button } from "@material-ui/core";
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"
 import { logout, selectUser } from "../features/userSlice";
 import { auth } from '../firebase';
 
 function HeaderOp({ Icon, title, use }) {
+    const [zin, setZin] = useState(false);
     const user = useSelector(selectUser);
     const dispatch = useDispatch();
 
@@ -17,13 +19,21 @@ function HeaderOp({ Icon, title, use }) {
     }
 
     return (
-        <HeaderOpContainer onClick={logoutNow}>
-            {Icon && <Icon />}
-            {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
-            <p>{title}</p>
-            {use && <Arrow />}
-            {use && <PopDown></PopDown>}
-        </HeaderOpContainer>
+        <>
+            <HeaderOpContainer onClick={logoutNow}>
+                {Icon && <Icon />}
+                {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
+                <p>{title}</p>
+                {use && <Arrow />}
+            </HeaderOpContainer>
+            {use &&
+                <PopDown className='shadow' zin={zin}>
+                    <h3>{user.displayname}</h3>
+                    <p>{user.email}</p>
+                   <Button>Sign Out</Button>
+                </PopDown>
+            }
+        </>
     )
 }
 
@@ -94,5 +104,18 @@ const Arrow = styled(ArrowDropDownIcon)`
 `;
 
 const PopDown = styled.div`
+    position: absolute;
+    top: 3.7rem;
+    right: 0;
+    text-align: center;
+    padding: 1rem 1rem 0.3rem;
+    line-height: 1.6;
 
+    > .MuiButton-root {
+        width: 100%;
+        margin-top: 0.5rem;
+        border: solid 1px #0a66c2;
+        color: #0a66c2;
+        border-radius: 50%;
+    }
 `;
