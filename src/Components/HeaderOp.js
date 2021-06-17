@@ -20,7 +20,7 @@ function HeaderOp({ Icon, title, use }) {
 
     return (
         <>
-            <HeaderOpContainer onClick={logoutNow}>
+            <HeaderOpContainer onClick={e => setZin(!zin)}>
                 {Icon && <Icon />}
                 {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
                 <p>{title}</p>
@@ -30,7 +30,7 @@ function HeaderOp({ Icon, title, use }) {
                 <PopDown className='shadow' zin={zin}>
                     <h3>{user.displayname}</h3>
                     <p>{user.email}</p>
-                   <Button>Sign Out</Button>
+                   <Button onClick={logoutNow}>Sign Out</Button>
                 </PopDown>
             }
         </>
@@ -107,6 +107,9 @@ const PopDown = styled.div`
     position: absolute;
     top: 3.7rem;
     right: 0;
+    transition: opacity 400ms ease-in-out;
+    visibility: ${props => props.zin ? "visible" : "hidden"};
+    opacity: ${props => props.zin ? 1 : 0};
     text-align: center;
     padding: 1rem 1rem 0.3rem;
     line-height: 1.6;
