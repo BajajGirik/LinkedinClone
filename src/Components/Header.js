@@ -111,4 +111,12 @@ const Searchbar = styled.div`
 
 const HeaderR = styled.div`
     display: flex;
+    
+    div:nth-of-type(1) {
+        opacity: 1 !important;
+        
+        ::after {
+            transform: scaleX(1) !important;
+        }
+    }
 `;
