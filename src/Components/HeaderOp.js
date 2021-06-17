@@ -1,4 +1,5 @@
 import { Avatar } from "@material-ui/core";
+import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components"
 import { logout, selectUser } from "../features/userSlice";
@@ -19,7 +20,9 @@ function HeaderOp({ Icon, title, use }) {
         <HeaderOpContainer onClick={logoutNow}>
             {Icon && <Icon />}
             {use && <AvatarS src={user?.photo} >{user?.displayname[0]}</AvatarS> }
-            <p>{ title }</p>
+            <p>{title}</p>
+            {use && <Arrow />}
+            {use && <PopDown></PopDown>}
         </HeaderOpContainer>
     )
 }
@@ -77,4 +80,19 @@ const AvatarS = styled(Avatar)`
     margin-bottom: 1px;
     width: 1.5625rem !important;
     height: 1.5625rem !important;
+`;
+
+const Arrow = styled(ArrowDropDownIcon)`
+    position: absolute;
+    bottom: -11.5%;
+    right: 12%;
+
+    @media screen and (max-width: 46.25rem) {
+        bottom: -60%;
+        right: 35%;
+    }
+`;
+
+const PopDown = styled.div`
+
 `;
