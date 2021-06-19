@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import './App.css';
 import Contents from './Components/Contents';
 import Header from './Components/Header';
 import Login from './Components/Login';
