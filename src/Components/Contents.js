@@ -5,7 +5,7 @@ import EventNoteIcon from '@material-ui/icons/EventNote';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import styled from "styled-components"
 import Posts from "./Posts";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import firebase from "firebase";
 import { db } from "../firebase";
 import { useSelector } from "react-redux";
@@ -15,9 +15,15 @@ function Contents() {
     const user = useSelector(selectUser);
     const [inpu, setInpu] = useState('');
     const [posts, setPosts] = useState([]);
+    const [img, setImg] = useState(null);
+    const imgpicker = useRef(null);
 
     const changeIt = e => {
         setInpu(e.target.value);
+    }
+
+    const addImage = e => {
+
     }
 
     useEffect(() => {
@@ -54,13 +60,16 @@ function Contents() {
             <div className='shadow'>
                 <ContentInput onSubmit={submitIt}>
                     <Avatar src={user?.photo}>{user.displayname[0]}</Avatar>
-                    <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt}/>
+                    <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt} />
                 </ContentInput>
 
                 <MediaPosting>
-                    <Media>
+                    <Media onClick={() => imgpicker.current.click() }>
                         <PhotoIcon style={{ color: "skyblue" }} />
                         <p>Photo</p>
+                        <input type="file" ref={imgpicker} accept="image/*"  
+                            onChange={addImage}  hidden
+                        />
                     </Media>
                     <Media>
                         <YouTubeIcon style={{ color: "#7fc15e" }} />
