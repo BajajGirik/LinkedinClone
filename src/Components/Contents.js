@@ -7,7 +7,7 @@ import styled from "styled-components"
 import Posts from "./Posts";
 import { useEffect, useState, useRef } from "react";
 import firebase from "firebase";
-import { db } from "../firebase";
+import { db, storage } from "../firebase";
 import { useSelector } from "react-redux";
 import { selectUser } from "../features/userSlice";
 
@@ -51,6 +51,24 @@ function Contents() {
                 desc: "A new user trying out linkedinclone",
                 post: inpu,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then((doc) => {
+                if (img) {
+                    const upload = storage.ref(`posts/${doc.id}`).putString(img, 'data_url');
+                    setImg(null);
+                    upload.on('state_change',
+                        null,
+                        error => alert(error),
+                        () => {
+                            storage.ref(`posts/${doc.id}`).getDownloadURL()
+                            .then((url) => {
+                                db.collection('posts').doc(doc.id).set({
+                                    postImg: url
+                                }, { merge: true });
+                            })
+                        }
+                    );
+                }
             });
         
             setInpu('');
