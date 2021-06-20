@@ -23,7 +23,14 @@ function Contents() {
     }
 
     const addImage = e => {
-
+        const reader = new FileReader();
+        const f = e.target.files[0];
+        if (f) {
+            reader.readAsDataURL(f);
+            reader.onload = (readerevent) => {
+                setImg(readerevent.target.result);
+            };
+        }
     }
 
     useEffect(() => {
@@ -61,6 +68,12 @@ function Contents() {
                 <ContentInput onSubmit={submitIt}>
                     <Avatar src={user?.photo}>{user.displayname[0]}</Avatar>
                     <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt} />
+                    {img &&
+                        <Preview onClick={() => setImg(null)}>
+                            <img src={img} alt="" />
+                            <p>REMOVE</p>
+                        </Preview>
+                    }
                 </ContentInput>
 
                 <MediaPosting>
@@ -128,6 +141,8 @@ const ContentInput = styled.form`
         padding: 0.4rem 1rem;  
     }
 `;
+
+const Preview = styled.div``;
 
 const MediaPosting = styled.div`
     margin-top: 0.5rem;
