@@ -5,7 +5,7 @@ import MobileScreenShareIcon from '@material-ui/icons/MobileScreenShare';
 import SendIcon from '@material-ui/icons/Send';
 import styled from "styled-components"
 
-function Posts({ userimg, name, desc, timestamp, post }) {
+function Posts({ userimg, name, desc, timestamp, post, postImg }) {
     return (
         <PostContainer className='shadow'>
             <UserInfo>
@@ -20,6 +20,12 @@ function Posts({ userimg, name, desc, timestamp, post }) {
             <div>
                 { post }
             </div>
+
+            {postImg && 
+                <PostImage>
+                <img src={postImg} alt="" />
+                </PostImage>
+            }
 
             <SocialActions>
                 <div>
@@ -69,6 +75,17 @@ const UserInfo = styled.div`
         }
     }
 
+`;
+
+const PostImage = styled.div`
+    margin-top: 1rem;
+
+    > img {
+        width: 100%;
+        object-fit: cover;
+        background-position: center;
+        border-radius: 10px;
+    }
 `;
 
 const SocialActions = styled.div`

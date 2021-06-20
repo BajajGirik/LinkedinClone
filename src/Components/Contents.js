@@ -125,6 +125,7 @@ function Contents() {
                     name={data.name}
                     desc={data.desc}
                     post={data.post}
+                    postImg={data.postImg}
                     timestamp={data.timestamp?.toDate().toString()}
                 />
             ))}
