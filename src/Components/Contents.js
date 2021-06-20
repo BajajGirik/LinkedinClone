@@ -71,8 +71,9 @@ function Contents() {
                         <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt} />
                     </div>    
                     {img &&
-                        <Preview onClick={() => setImg(null)}>
+                        <Preview>
                             <img src={img} alt="" />
+                            <p onClick={() => setImg(null)}>REMOVE</p>
                         </Preview>
                     }
                 </ContentInput>
@@ -148,7 +149,30 @@ const ContentInput = styled.form`
     } 
 `;
 
-const Preview = styled.div``;
+const Preview = styled.div`
+    margin-top: 1rem;
+    text-align: center;
+
+    > img {
+        width: 100%;
+        object-fit: cover;
+        background-position: center;
+        border-radius: 10px;
+    }
+
+    > p {
+        margin-top: 0.2rem;
+        padding: 0.5rem;
+        color: red;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 400ms ease-in-out;
+
+        :hover {
+            background-color: lightgray;
+        }
+    } 
+`;
 
 const MediaPosting = styled.div`
     margin-top: 0.5rem;
