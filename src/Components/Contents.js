@@ -66,12 +66,13 @@ function Contents() {
         <ContentsContainer>
             <div className='shadow'>
                 <ContentInput onSubmit={submitIt}>
-                    <Avatar src={user?.photo}>{user.displayname[0]}</Avatar>
-                    <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt} />
+                    <div>
+                        <Avatar src={user?.photo}>{user.displayname[0]}</Avatar>
+                        <input type="text" placeholder='Start a post' value={inpu} onChange={changeIt} />
+                    </div>    
                     {img &&
                         <Preview onClick={() => setImg(null)}>
                             <img src={img} alt="" />
-                            <p>REMOVE</p>
                         </Preview>
                     }
                 </ContentInput>
@@ -124,22 +125,27 @@ const ContentsContainer = styled.div`
 
 const ContentInput = styled.form`
     display: flex;
+    flex-direction: column;
 
-    > .MuiAvatar-root {
-        color: black;
-        font-weight: 700;
-    }
+    > :nth-child(1) {
+        display: flex;
 
-    > input {
-        outline: none;
-        font-size: 0.9rem;
-        font-weight: 700;
-        border: solid 1px lightgray;
-        border-radius: 30px;
-        flex-grow: 1;
-        margin-left: 0.6rem;
-        padding: 0.4rem 1rem;  
-    }
+        > .MuiAvatar-root {
+            color: black;
+            font-weight: 700;
+        }
+
+        > input {
+            outline: none;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border: solid 1px lightgray;
+            border-radius: 30px;
+            flex-grow: 1;
+            margin-left: 0.6rem;
+            padding: 0.4rem 1rem;  
+        }
+    } 
 `;
 
 const Preview = styled.div``;
