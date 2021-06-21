@@ -16,7 +16,9 @@ function Contents() {
     const [inpu, setInpu] = useState('');
     const [posts, setPosts] = useState([]);
     const [img, setImg] = useState(null);
+    const [vid, setVid] = useState(null);
     const imgpicker = useRef(null);
+    const videopicker = useRef(null);
 
     const changeIt = e => {
         setInpu(e.target.value);
@@ -29,6 +31,23 @@ function Contents() {
             reader.readAsDataURL(f);
             reader.onload = (readerevent) => {
                 setImg(readerevent.target.result);
+                if (vid) {
+                    setVid(null);
+                }
+            };
+        }
+    }
+
+    const addVideo = e => {
+        const reader = new FileReader();
+        const f = e.target.files[0];
+        if (f) {
+            reader.readAsDataURL(f);
+            reader.onload = (readerevent) => {
+                setVid(readerevent.target.result);
+                if (img) {
+                    setImg(null);
+                }
             };
         }
     }
@@ -69,6 +88,22 @@ function Contents() {
                         }
                     );
                 }
+                if (vid) {
+                    const upload = storage.ref(`posts/${doc.id}`).putString(vid, 'data_url');
+                    setVid(null);
+                    upload.on('state_change',
+                        null,
+                        error => alert(error),
+                        () => {
+                            storage.ref(`posts/${doc.id}`).getDownloadURL()
+                            .then((url) => {
+                                db.collection('posts').doc(doc.id).set({
+                                    postVid: url
+                                }, { merge: true });
+                            })
+                        }
+                    );
+                }
             });
         
             setInpu('');
@@ -94,6 +129,7 @@ function Contents() {
                             <p onClick={() => setImg(null)}>REMOVE</p>
                         </Preview>
                     }
+                    
                 </ContentInput>
 
                 <MediaPosting>
@@ -104,9 +140,12 @@ function Contents() {
                             onChange={addImage}  hidden
                         />
                     </Media>
-                    <Media>
+                    <Media onClick={() => videopicker.current.click() }>
                         <YouTubeIcon style={{ color: "#7fc15e" }} />
                         <p>Video</p>
+                        <input type="file" ref={videopicker} accept="video/*"  
+                            onChange={addVideo}  hidden
+                        />
                     </Media>
                     <Media>
                         <EventNoteIcon style={{ color: "orange" }} />
@@ -126,6 +165,7 @@ function Contents() {
                     desc={data.desc}
                     post={data.post}
                     postImg={data.postImg}
+                    postVid={data.postVid}
                     timestamp={data.timestamp?.toDate().toString()}
                 />
             ))}
