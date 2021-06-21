@@ -25,29 +25,29 @@ function Contents() {
     }
 
     const addImage = e => {
+        if (vid) {
+            setVid(null);
+        }
         const reader = new FileReader();
         const f = e.target.files[0];
         if (f) {
             reader.readAsDataURL(f);
             reader.onload = (readerevent) => {
                 setImg(readerevent.target.result);
-                if (vid) {
-                    setVid(null);
-                }
             };
         }
     }
 
     const addVideo = e => {
+        if (img) {
+            setImg(null);
+        }
         const reader = new FileReader();
         const f = e.target.files[0];
         if (f) {
             reader.readAsDataURL(f);
             reader.onload = (readerevent) => {
                 setVid(readerevent.target.result);
-                if (img) {
-                    setImg(null);
-                }
             };
         }
     }
@@ -129,7 +129,12 @@ function Contents() {
                             <p onClick={() => setImg(null)}>REMOVE</p>
                         </Preview>
                     }
-                    
+                    {vid &&
+                        <Preview>
+                            <video src={vid} controls>Your browser doesn't support video preview</video>
+                            <p onClick={() => setVid(null)}>REMOVE</p>
+                        </Preview>
+                    }
                 </ContentInput>
 
                 <MediaPosting>
@@ -213,9 +218,14 @@ const Preview = styled.div`
     text-align: center;
 
     > img {
-        width: 100%;
+        max-width: 100%;
         object-fit: cover;
         background-position: center;
+        border-radius: 10px;
+    }
+
+    > video {
+        max-width: 100%;
         border-radius: 10px;
     }
 
