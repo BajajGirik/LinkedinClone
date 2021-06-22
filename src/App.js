@@ -54,7 +54,7 @@ const Main = styled.div`
   padding-top: 3.5625rem;
   display: flex;
 
-  @media screen and (max-width: 848px) {
+  @media screen and (max-width: 53rem) {
     flex-direction: column;
   }
 `;

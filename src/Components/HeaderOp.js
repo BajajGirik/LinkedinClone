@@ -83,6 +83,7 @@ const HeaderOpContainer = styled.div`
 
     @media screen and (max-width: 39.5rem) {
         width: 2.4rem;
+        opacity: 1;
     }
 `;
 
@@ -104,6 +105,10 @@ const Arrow = styled(ArrowDropDownIcon)`
     @media screen and (max-width: 46.25rem) {
         bottom: -60%;
         right: 35%;
+    }
+
+    @media screen and (max-width: 39.5rem) {
+        right: 22%;
     }
 `;
 

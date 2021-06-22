@@ -34,6 +34,7 @@ export default Header
 const HeaderContainer = styled.div`
   background-color: white;
   position: fixed;
+  max-width: 100vw;
   top: 0;
   left: 0;
   right: 0;
@@ -46,7 +47,7 @@ const HeaderContainer = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 39.5rem) {
-      padding: 0 1.2rem;
+      padding: 0 0.4rem;
       justify-content: space-between;
   }
 `;
@@ -115,6 +116,10 @@ const Searchbar = styled.div`
 
   @media screen and (max-width: 39.5rem) {
         width: 2.4rem;
+
+        > .MuiSvgIcon-root  {
+            opacity: 1;
+        }
     }
 `;
 
