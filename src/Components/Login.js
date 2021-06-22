@@ -136,6 +136,10 @@ const LoginContainer = styled.div`
         > img {
             object-fit: contain;
             width: 26.25rem;
+
+            @media screen and (max-width: 39.5rem) {
+                width: 14.5rem;
+            }
         }
 
         > form > input {
