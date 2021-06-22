@@ -44,6 +44,11 @@ const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media screen and (max-width: 39.5rem) {
+      padding: 0 1.2rem;
+      justify-content: space-between;
+  }
 `;
 
 const HeaderL = styled.div`
@@ -107,6 +112,10 @@ const Searchbar = styled.div`
             display: none;
       }
   }
+
+  @media screen and (max-width: 39.5rem) {
+        width: 2.4rem;
+    }
 `;
 
 const HeaderR = styled.div`

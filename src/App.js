@@ -53,4 +53,8 @@ export default App;
 const Main = styled.div`
   padding-top: 3.5625rem;
   display: flex;
+
+  @media screen and (max-width: 848px) {
+    flex-direction: column;
+  }
 `;

@@ -45,19 +45,19 @@ const HeaderOpContainer = styled.div`
     opacity: 0.7;
     cursor: pointer;
     position: relative;
-
+    
     > p {
         font-size: 0.75rem;
     }
-
+    
     :hover {
         opacity: 1;
     }
-
+    
     :hover::after {
         transform: scaleX(1);
     }
-
+    
     ::after {
         content: "";
         background-color: black;
@@ -70,15 +70,19 @@ const HeaderOpContainer = styled.div`
         transform: scaleX(0);
         transition: transform 300ms ease-in-out;
     }
-
+    
     @media screen and (max-width: 46.25rem) {
         > p {
             display: none;
         }
-
+        
         ::after {
             display: none;
         }
+    }
+
+    @media screen and (max-width: 39.5rem) {
+        width: 2.4rem;
     }
 `;
 
