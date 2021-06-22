@@ -5,7 +5,7 @@ import MobileScreenShareIcon from '@material-ui/icons/MobileScreenShare';
 import SendIcon from '@material-ui/icons/Send';
 import styled from "styled-components"
 
-function Posts({ userimg, name, desc, timestamp, post, postImg }) {
+function Posts({ userimg, name, desc, timestamp, post, postImg, postVid }) {
     return (
         <PostContainer className='shadow'>
             <UserInfo>
@@ -22,9 +22,15 @@ function Posts({ userimg, name, desc, timestamp, post, postImg }) {
             </div>
 
             {postImg && 
-                <PostImage>
-                <img src={postImg} alt="" />
-                </PostImage>
+                <PostMedia>
+                    <img src={postImg} alt="" />
+                </PostMedia>
+            }
+
+            {postVid && 
+                <PostMedia>
+                    <video src={postVid} controls>Your Browser doesn't support this video format</video>
+                </PostMedia>
             }
 
             <SocialActions>
@@ -77,14 +83,21 @@ const UserInfo = styled.div`
 
 `;
 
-const PostImage = styled.div`
+const PostMedia = styled.div`
     margin-top: 1rem;
+    text-align: center;
 
     > img {
-        width: 100%;
+        max-width: 100%;
         object-fit: cover;
         background-position: center;
         border-radius: 10px;
+    }
+
+    > video {
+        max-width: 100%;
+        border-radius: 10px;
+        outline: none;
     }
 `;
 
