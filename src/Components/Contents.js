@@ -36,6 +36,7 @@ function Contents() {
                 setImg(readerevent.target.result);
             };
         }
+        e.target.value = '';
     }
 
     const addVideo = e => {
@@ -50,6 +51,7 @@ function Contents() {
                 setVid(readerevent.target.result);
             };
         }
+        e.target.value = '';
     }
 
     useEffect(() => {
