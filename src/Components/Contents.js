@@ -249,6 +249,11 @@ const MediaPosting = styled.div`
     margin-top: 0.5rem;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
+
+    @media screen and (max-width: 39.5rem) {
+        justify-content: space-between;
+    }    
 `;
 
 const Media = styled.div`
@@ -269,5 +274,9 @@ const Media = styled.div`
 
     > .MuiSvgIcon-root {
         font-size: 1.8rem;
+    }
+
+    @media screen and (max-width: 39.5rem) {
+        flex-basis: 50%;
     }
 `;
