@@ -1,9 +1,10 @@
 import React from 'react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Contents from './Components/Contents';
 import Header from './Components/Header';
+import Loading from './Components/Loading';
 import Login from './Components/Login';
 import SidebarL from './Components/SidebarL';
 import SidebarR from './Components/SidebarR';
@@ -13,6 +14,7 @@ import { auth } from './firebase';
 function App() {
   const user = useSelector(selectUser);
   const dispath = useDispatch();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     auth.onAuthStateChanged(userAuth => {
@@ -25,25 +27,29 @@ function App() {
         }));
       }
     })
+    setLoading(false);
   }, []);
 
   return (
-    <div className="App">
-      {
-      !user ? (
-        <Login />
-        ) :
-          (
-            <>
-              <Header />
-              <Main>
-                <SidebarL />
-                <Contents />
-                <SidebarR />
-              </Main>
-            </>
-          )
-      }      
+  <div className="App">
+      {loading ?
+        (
+          <Loading /> 
+        ) : (
+        !user ? (
+          <Login />
+          ) : (
+          <>
+            <Header />
+            <Main>
+              <SidebarL />
+              <Contents />
+              <SidebarR />
+            </Main>
+          </>
+        ) 
+    )
+    }                                                              
     </div>
   );
 }
